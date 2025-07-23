@@ -10,29 +10,31 @@ router.use(authMiddleware)
  * Default route
  */
 router.get('/', async (req, res) => {
-    try {
-        const posts = await Post.find({ author: req.user._id })
+  try {
+    const posts = await Post.find({ author: req.user._id })
 
-        res.json(posts)
-    } catch (error) {
-        console.error(error)
-        res.status(400).json(error)
-    }
+    res.json(posts)
+  } catch (error) {
+    console.error(error)
+    res.status(400).json(error)
+  }
 })
 
 /**
  * POST route to create new post
  */
 router.post('/', async (req, res) => {
-    try {
-        const newPost = await Post.create({
-            ...req.body,
-            author: req.user._id
-        })
+  try {
+    const newPost = await Post.create({
+      ...req.body,
+      author: req.user._id
+    })
 
-        res.json(newPost)
-    } catch (error) {
-        console.error(error)
-        res.status(400).json(error)
-    }
+    res.json(newPost)
+  } catch (error) {
+    console.error(error)
+    res.status(400).json(error)
+  }
 })
+
+export default router

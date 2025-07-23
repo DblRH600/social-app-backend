@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import db from './config/connection.js'
 import usersRouter from './routes/users.js'
+import postRouter from './routes/posts.js'
 
 
 
@@ -17,6 +18,7 @@ app.use(express.json())
 
 // =========== Routes ============= //
 app.use('/api/users', usersRouter)
+app.use('/api/posts', postRouter)
 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`))
