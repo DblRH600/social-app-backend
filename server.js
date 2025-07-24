@@ -20,6 +20,10 @@ app.use(express.json())
 app.use('/api/users', usersRouter)
 app.use('/api/posts', postRouter)
 
+app.get('/', (req, res) => {
+  res.send("Hello from the Backend!")
+})
+
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`))
 })
